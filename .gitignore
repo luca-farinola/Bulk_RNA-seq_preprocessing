@@ -1,0 +1,58 @@
+# Nextflow work directories
+work/
+trace/
+timeline/
+reports/
+.cache/
+.tmp/
+.nextflow*
+.nextflow.log*
+
+# Output/results
+results/
+output/
+*.html
+*.zip
+*.txt
+*.csv
+*.tsv
+*.pdf
+
+# Large data files
+data/
+star_index/
+star_index_small/
+
+# Sequencing data
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+*.sam
+*.bam
+*.bai
+
+# Reference files
+*.fa
+*.fa.gz
+*.fasta
+*.fasta.gz
+*.gtf
+*.gtf.gz
+*.gff
+*.gff3
+
+# Binary indices
+*_STARgenome/
+*.idx
+*.bt2
+*.bwt
+*.sa
+*.ann
+*.pac
+*.amb
+*.settings
+
+# Misc system files
+.DS_Store
+Thumbs.db
