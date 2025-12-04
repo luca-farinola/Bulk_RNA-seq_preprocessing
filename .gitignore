@@ -17,6 +17,7 @@ output/
 *.csv
 *.tsv
 *.pdf
+!samplesheet.csv
 
 # Large data files
 data/
