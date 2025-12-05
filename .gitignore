@@ -10,6 +10,7 @@ reports/
 
 # Output/results
 results/
+results_test/
 output/
 *.html
 *.zip
@@ -19,9 +20,8 @@ output/
 *.pdf
 !samplesheet.csv
 
-# Large data files
+# for testing
 data/
-star_index/
 star_index_small/
 
 # Sequencing data

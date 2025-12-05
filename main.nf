@@ -4,6 +4,7 @@ include { FASTQC     } from './modules/fastqc.nf'
 include { TRIM_GALORE } from './modules/trim.nf'
 include { STAR_ALIGN } from './modules/star_align.nf'
 include { QUANT } from './modules/quant.nf'
+include { MULTIQC } from './modules/multiqc.nf'
 
 workflow {
 
@@ -19,10 +20,14 @@ workflow {
     TRIM_GALORE( samples_ch )
 
     // STAR: align each sample (paired-end)
-    STAR_ALIGN( samples_ch, params.indexforstar )
+    index_ch = Channel.value( file(params.indexforstar) )
+    STAR_ALIGN( samples_ch, index_ch )
 
     // Quantification with featureCounts
-    QUANT( STAR_ALIGN.out.bam.collect(), params.gtf_file )
+    quant_ch = Channel.value( file(params.gtf_file) )
+    QUANT( STAR_ALIGN.out.bam.collect(), quant_ch )
+
+    MULTIQC( FASTQC.out.zip.collect() )
 }
 
 // MAMBA FORGE 
