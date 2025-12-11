@@ -14,10 +14,10 @@ process QUANT {
     path gtf_file
 
     output:
-    path "featureCounts.txt", emit: counts
+    path "count_table.txt", emit: counts
 
     script:
     """
-    featureCounts -p --countReadPairs -a ${gtf_file} -o featureCounts.txt ${bam_files}
+    featureCounts -p --countReadPairs -a ${gtf_file} -o count_table.txt ${bam_files}
     """
 }

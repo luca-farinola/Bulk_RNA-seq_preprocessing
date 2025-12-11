@@ -39,9 +39,10 @@ workflow {
     index_ch = Channel.value( file(params.indexforstar) )
     STAR_ALIGN( reads_for_alignment, index_ch )
 
+    // Collect all BAMs for quantification
+    bam_list_ch = STAR_ALIGN.out.bam.collect()
+
     // Quantification with featureCounts
     quant_ch = Channel.value( file(params.gtf_file) )
-    QUANT( STAR_ALIGN.out.bam.collect(), quant_ch )
+    QUANT( bam_list_ch, quant_ch )
 }
-
-// MAMBA FORGE 
