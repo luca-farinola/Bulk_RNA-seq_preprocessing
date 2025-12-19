@@ -23,6 +23,7 @@ output/
 # for testing
 data/
 star_index_small/
+testdata
 
 # Sequencing data
 *.fastq
