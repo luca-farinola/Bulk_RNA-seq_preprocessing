@@ -54,7 +54,8 @@ Input samples are defined in a CSV file with three required columns:
 nextflow run main.nf \
   --samplesheet path/to/samplesheet.csv \
   --indexforstar path/to/star_index \
-  --gtf_file path/to/annotation.gtf
+  --gtf_file path/to/annotation.gtf \
+  --overalloutputdir path/to/results
 
 
 

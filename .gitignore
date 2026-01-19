@@ -33,6 +33,7 @@ testdata
 *.sam
 *.bam
 *.bai
+*.sh
 
 # Reference files
 *.fa

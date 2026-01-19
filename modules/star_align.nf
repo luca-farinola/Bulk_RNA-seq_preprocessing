@@ -3,7 +3,7 @@ nextflow.enable.dsl=2
 process STAR_ALIGN {
 
     container "community.wave.seqera.io/library/star:2.7.11b--822039d47adf19a7"
-    publishDir params.outdir_star, mode: 'copy'
+    publishDir params.outdir_star, mode: 'rellink'
 
     label 'star_align'
 
@@ -21,11 +21,12 @@ process STAR_ALIGN {
 
     script:
     """
-    STAR \\
-      --genomeDir ${indexforstar} \\
-      --readFilesIn  ${read1} ${read2}  \\
-      --readFilesCommand zcat \\
-      --outSAMtype BAM Unsorted \\
+    STAR \
+      --genomeDir ${indexforstar} \
+      --runThreadN ${task.cpus} \
+      --readFilesIn  ${read1} ${read2}  \
+      --readFilesCommand zcat \
+      --outSAMtype BAM Unsorted \
       --outFileNamePrefix ${sample_id}.
     """
 }
